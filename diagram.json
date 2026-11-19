@@ -1,0 +1,113 @@
+{
+  "version": 1,
+  "author": "IoT PC2 Base Project",
+  "editor": "wokwi",
+  "parts": [
+    { "type": "board-esp32-devkit-c-v4", "id": "esp", "top": 0, "left": 0, "attrs": {} },
+    {
+      "type": "wokwi-breadboard",
+      "id": "bb",
+      "top": -358.2,
+      "left": -227.6,
+      "attrs": { "rows": "30", "cols": "15", "size": "large" }
+    },
+    { "type": "wokwi-lcd2004", "id": "lcd", "top": -368, "left": 524, "attrs": { "pins": "i2c" } },
+    {
+      "type": "wokwi-hx711",
+      "id": "hx711",
+      "top": -93.4,
+      "left": 1097,
+      "attrs": { "type": "5kg" }
+    },
+    { "type": "wokwi-gas-sensor", "id": "mq2", "top": 444.3, "left": 266.2, "attrs": {} },
+    { "type": "wokwi-hc-sr04", "id": "ultrasonic", "top": 337.5, "left": -128.9, "attrs": {} },
+    { "type": "wokwi-pir-motion-sensor", "id": "pir", "top": -63.2, "left": 712.62, "attrs": {} },
+    {
+      "type": "wokwi-rgb-led",
+      "id": "rgb",
+      "top": -24.8,
+      "left": 1018.7,
+      "attrs": { "common": "cathode" }
+    },
+    { "type": "wokwi-relay-module", "id": "relay", "top": 182.6, "left": 1161.6, "attrs": {} },
+    { "type": "wokwi-servo", "id": "servo", "top": 420.4, "left": 921.6, "attrs": {} },
+{
+  "type": "wokwi-resistor",
+  "id": "rgb_res_r",
+  "top": -80,
+  "left": 1100,
+  "attrs": { "value": "220" }
+},
+{
+  "type": "wokwi-resistor",
+  "id": "rgb_res_g",
+  "top": -40,
+  "left": 1100,
+  "attrs": { "value": "220" }
+},
+{
+  "type": "wokwi-resistor",
+  "id": "rgb_res_b",
+  "top": 0,
+  "left": 1100,
+  "attrs": { "value": "220" }
+},
+{
+  "type": "wokwi-led",
+  "id": "led",
+  "top": 120,
+  "left": 1010,
+  "attrs": { "color": "blue" }
+},
+{
+  "type": "wokwi-resistor",
+  "id": "led_resistor",
+  "top": 150,
+  "left": 1100,
+  "attrs": { "value": "220" }
+}
+  ],
+  "connections": [
+    [ "esp:VIN", "bb:bp.1", "red", [] ],
+    [ "esp:GND.1", "bb:bn.1", "black", [] ],
+    [ "bb:bp.1", "bb:bp.30", "red", [] ],
+    [ "bb:bn.1", "bb:bn.30", "black", [] ],
+    [ "bb:bp.1", "lcd:VCC", "red", [] ],
+    [ "bb:bn.1", "lcd:GND", "black", [] ],
+    [ "esp:21", "lcd:SDA", "green", [] ],
+    [ "esp:22", "lcd:SCL", "blue", [] ],
+    [ "bb:bp.5", "hx711:VCC", "red", [] ],
+    [ "bb:bn.5", "hx711:GND", "black", [] ],
+    [ "esp:16", "hx711:DT", "green", [] ],
+    [ "esp:17", "hx711:SCK", "blue", [] ],
+    [ "bb:bp.10", "mq2:VCC", "red", [] ],
+    [ "bb:bn.10", "mq2:GND", "black", [] ],
+    [ "esp:34", "mq2:AOUT", "orange", [] ],
+    [ "bb:bp.15", "ultrasonic:VCC", "red", [] ],
+    [ "bb:bn.15", "ultrasonic:GND", "black", [] ],
+    [ "esp:5", "ultrasonic:TRIG", "green", [] ],
+    [ "esp:18", "ultrasonic:ECHO", "blue", [] ],
+    [ "bb:bp.20", "pir:VCC", "red", [] ],
+    [ "bb:bn.20", "pir:GND", "black", [] ],
+    [ "esp:19", "pir:OUT", "orange", [] ],
+    [ "esp:25", "rgb_res_r:1", "red", [] ],
+    [ "rgb_res_r:2", "rgb:R", "red", [] ],
+
+    [ "esp:26", "rgb_res_g:1", "green", [] ],
+    [ "rgb_res_g:2", "rgb:G", "green", [] ],
+    [ "esp:4", "led_resistor:1", "blue", [] ],
+[ "led_resistor:2", "led:A", "blue", [] ],
+[ "led:C", "bb:bn.25", "black", [] ],
+    [ "esp:27", "rgb_res_b:1", "blue", [] ],
+    [ "rgb_res_b:2", "rgb:B", "blue", [] ],
+    [ "bb:bn.25", "rgb:COM", "black", [] ],
+    [ "bb:bp.25", "relay:VCC", "red", [] ],
+    [ "bb:bn.25", "relay:GND", "black", [] ],
+    [ "esp:23", "relay:IN", "orange", [] ],
+    [ "bb:bp.30", "servo:V+", "red", [] ],
+    [ "bb:bn.30", "servo:GND", "black", [] ],
+    [ "esp:13", "servo:PWM", "orange", [] ]
+    
+  ],
+  "dependencies": {}
+}
